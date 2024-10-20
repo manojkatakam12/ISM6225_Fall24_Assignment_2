@@ -215,8 +215,15 @@ namespace Assignment_2
         {
             try
             {
-                // Write your code here
-                return false; // Placeholder
+                if (x < 0) return false;
+                int original = x, reversed = 0;
+                while (x != 0)
+                {
+                    int digit = x % 10;
+                    reversed = reversed * 10 + digit;
+                    x /= 10;
+                }
+                return original == reversed;
             }
             catch (Exception)
             {
@@ -229,8 +236,15 @@ namespace Assignment_2
         {
             try
             {
-                // Write your code here
-                return 0; // Placeholder
+                if (n <= 1) return n;
+                int a = 0, b = 1;
+                for (int i = 2; i <= n; i++)
+                {
+                    int temp = a + b;
+                    a = b;
+                    b = temp;
+                }
+                return b;
             }
             catch (Exception)
             {
