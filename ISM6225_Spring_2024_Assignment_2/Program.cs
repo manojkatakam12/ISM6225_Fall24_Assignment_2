@@ -170,8 +170,13 @@ namespace Assignment_2
         {
             try
             {
-                // Write your code here
-                return "101010"; // Placeholder
+                string binary = "";
+                while (decimalNumber > 0)
+                {
+                    binary = (decimalNumber % 2) + binary;
+                    decimalNumber /= 2;
+                }
+                return binary == "" ? "0" : binary;
             }
             catch (Exception)
             {
