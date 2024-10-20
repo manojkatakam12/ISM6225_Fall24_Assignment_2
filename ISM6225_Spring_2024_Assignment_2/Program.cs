@@ -62,22 +62,60 @@ namespace Assignment_2
         {
             try
             {
-                // Write your code here
-                return new List<int>(); // Placeholder
+                // Initialize a list to store the missing numbers
+                List<int> missingNumbers = new List<int>();
+                // Create a boolean array to keep track of numbers seen
+                bool[] seen = new bool[nums.Length + 1];
+
+                // Mark the numbers that are present in the array
+                foreach (int num in nums)
+                {
+                    seen[num] = true;
+                }
+
+                // Find the missing numbers
+                for (int i = 1; i < seen.Length; i++)
+                {
+                    if (!seen[i])
+                    {
+                        missingNumbers.Add(i);
+                    }
+                }
+
+                return missingNumbers;
             }
             catch (Exception)
             {
                 throw;
             }
         }
+
 
         // Question 2: Sort Array by Parity
         public static int[] SortArrayByParity(int[] nums)
         {
             try
             {
-                // Write your code here
-                return new int[0]; // Placeholder
+                // Initialize two lists to store even and odd numbers
+                List<int> evens = new List<int>();
+                List<int> odds = new List<int>();
+
+                // Separate the numbers based on parity
+                foreach (int num in nums)
+                {
+                    if (num % 2 == 0)
+                    {
+                        evens.Add(num);
+                    }
+                    else
+                    {
+                        odds.Add(num);
+                    }
+                }
+
+                // Combine even and odd numbers
+                evens.AddRange(odds);
+                return evens.ToArray();
             }
             catch (Exception)
             {
@@ -85,13 +123,25 @@ namespace Assignment_2
             }
         }
 
+
         // Question 3: Two Sum
         public static int[] TwoSum(int[] nums, int target)
         {
             try
             {
-                // Write your code here
-                return new int[0]; // Placeholder
+                // Use a dictionary to store numbers and their indices
+                Dictionary<int, int> numIndices = new Dictionary<int, int>();
+
+                for (int i = 0; i < nums.Length; i++)
+                {
+                    int complement = target - nums[i];
+                    if (numIndices.ContainsKey(complement))
+                    {
+                        return new int[] { numIndices[complement], i };
+                    }
+                    numIndices[nums[i]] = i;
+                }
+                return new int[0];
             }
             catch (Exception)
             {
@@ -104,14 +154,16 @@ namespace Assignment_2
         {
             try
             {
-                // Write your code here
-                return 0; // Placeholder
+                Array.Sort(nums);
+                int n = nums.Length;
+                return Math.Max(nums[n - 1] * nums[n - 2] * nums[n - 3], nums[0] * nums[1] * nums[n - 1]);
             }
             catch (Exception)
             {
                 throw;
             }
         }
+
 
         // Question 5: Decimal to Binary Conversion
         public static string DecimalToBinary(int decimalNumber)
